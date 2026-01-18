@@ -1,0 +1,286 @@
+/* /games/snake/style.css */
+/*
+  Premium Snake Stylesheet
+
+  This CSS file provides styling for the Snake game. It reuses much of
+  the neon and glassmorphic aesthetic from the Tetris implementation,
+  including a dark gradient background, frosted glass panels, and
+  responsive layouts. On mobile devices, on‑screen controls appear and
+  desktop control hints are hidden.
+
+  Variables are defined on the :root for easy theming.
+*/
+
+/* Global variables */
+:root {
+  --bg-color-from: #0f0c29;
+  --bg-color-mid:  #302b63;
+  --bg-color-to:   #24243e;
+  --panel-bg: rgba(255, 255, 255, 0.05);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --panel-glow: rgba(255, 255, 255, 0.15);
+  --text-color: #f5f5f5;
+  --accent-color: #7b5aff;
+  --button-bg: rgba(255, 255, 255, 0.08);
+  --button-hover: rgba(255, 255, 255, 0.15);
+  --button-active: rgba(255, 255, 255, 0.25);
+}
+
+/* Reset basics */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+/* Background gradient animation */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--bg-color-from), var(--bg-color-mid), var(--bg-color-to));
+  background-size: 400% 400%;
+  animation: moveGradient 20s ease infinite;
+  z-index: -1;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
+/* Layout container */
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Play area for the board */
+.play-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Board canvas styling */
+#board {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+  touch-action: none;
+}
+
+/* Overlay for pause and game over */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  z-index: 2;
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay .message {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+.overlay .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: var(--button-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-color);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 0 10px var(--panel-glow);
+}
+
+.overlay .btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.overlay .btn:active {
+  background: var(--button-active);
+  transform: translateY(0);
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text-color);
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.panel {
+  position: relative;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: 0 0 15px var(--panel-glow);
+  backdrop-filter: blur(8px);
+}
+
+.panel h2 {
+  margin: 0 0 0.5rem 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px var(--accent-color);
+}
+
+.stats .stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.stats .stat span:last-child {
+  font-weight: 500;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.controls-desktop ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.controls-desktop li {
+  margin-bottom: 0.25rem;
+}
+
+/* Mobile controls layout */
+.mobile-controls {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.mobile-controls .row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-controls .btn {
+  flex: 1;
+  margin: 0 0.25rem;
+  height: 60px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--panel-border);
+  background: var(--button-bg);
+  color: var(--text-color);
+  box-shadow: 0 0 12px var(--panel-glow);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.mobile-controls .btn:hover {
+  background: var(--button-hover);
+}
+
+.mobile-controls .btn:active {
+  background: var(--button-active);
+  transform: scale(0.96);
+}
+
+@media (max-width: 900px), (pointer: coarse) {
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .play-area {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .controls-desktop {
+    display: none;
+  }
+  .mobile-controls {
+    display: flex;
+    flex-direction: column;
+  }
+  .panel {
+    flex: 1;
+  }
+}
+
+/* Focus outlines for accessibility */
+button:focus, canvas:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}

@@ -2,29 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Mini Games</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+  <!-- Background FX -->
+  <div class="bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="noise"></div>
+  </div>
+
   <header class="hero">
-    <h1>Free Mini Games</h1>
-    <p class="subtitle">Play instantly — no downloads</p>
+    <div class="hero-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🎮</div>
+        <div class="brand-text">
+          <h1>Free Mini Games</h1>
+          <p class="subtitle">Classic arcade fun — instant play, no downloads</p>
+        </div>
+      </div>
+
+      <div class="hero-card glass">
+        <div class="hero-top">
+          <div class="pill">New</div>
+          <div class="pill subtle">Glass UI</div>
+        </div>
+
+        <div class="controls">
+          <div class="search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="searchInput" type="text" placeholder="Search games..." autocomplete="off" />
+          </div>
+
+          <div class="stats" id="statsText">Loading games…</div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="games-grid" id="gamesGrid"></section>
+  <main class="wrap">
+    <section class="games-grid" id="gamesGrid" aria-label="Game list"></section>
+
+    <div class="empty glass" id="emptyState" hidden>
+      <div class="empty-title">No matches</div>
+      <div class="empty-desc">Try a different search term.</div>
+      <button class="btn" id="clearBtn" type="button">Clear search</button>
+    </div>
   </main>
 
-  <footer>
-    © 2026 Free Mini Games
+  <footer class="footer">
+    <div class="footer-inner glass">
+      <span>© 2026 Free Mini Games</span>
+      <span class="dot">•</span>
+      <span>Built for fun</span>
+    </div>
   </footer>
 
   <script src="js/games.js"></script>

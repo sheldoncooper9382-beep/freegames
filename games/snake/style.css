@@ -1,26 +1,16 @@
 /* /games/snake/style.css */
-/*
-  Premium Snake Stylesheet
-
-  This CSS file provides styling for the Snake game. It reuses much of
-  the neon and glassmorphic aesthetic from the Tetris implementation,
-  including a dark gradient background, frosted glass panels, and
-  responsive layouts. On mobile devices, on‑screen controls appear and
-  desktop control hints are hidden.
-
-  Variables are defined on the :root for easy theming.
-*/
-
-/* Global variables */
 :root {
   --bg-color-from: #0f0c29;
   --bg-color-mid:  #302b63;
   --bg-color-to:   #24243e;
+
   --panel-bg: rgba(255, 255, 255, 0.05);
   --panel-border: rgba(255, 255, 255, 0.2);
   --panel-glow: rgba(255, 255, 255, 0.15);
+
   --text-color: #f5f5f5;
   --accent-color: #7b5aff;
+
   --button-bg: rgba(255, 255, 255, 0.08);
   --button-hover: rgba(255, 255, 255, 0.15);
   --button-active: rgba(255, 255, 255, 0.25);
@@ -62,10 +52,7 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .background {
-    animation: none;
-    background-position: 50% 50%;
-  }
+  .background { animation: none; background-position: 50% 50%; }
 }
 
 /* Layout container */
@@ -91,9 +78,10 @@ html, body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  min-height: 320px;
 }
 
-/* Board canvas styling */
+/* Board canvas styling (JS sets square size) */
 #board {
   display: block;
   width: 100%;
@@ -105,67 +93,77 @@ html, body {
   touch-action: none;
 }
 
-/* Overlay for pause and game over */
+/* Overlay for start / pause / game over */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(6px);
   border-radius: 12px;
   z-index: 2;
-  color: var(--text-color);
   text-align: center;
   padding: 1rem;
 }
 
-.overlay.hidden {
-  display: none;
-}
+.overlay.hidden { display: none; }
 
 .overlay .message {
   font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   text-shadow: 0 0 10px var(--accent-color);
 }
 
-.overlay .btn {
-  padding: 0.75rem 1.5rem;
+.overlay-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.overlay-hint {
+  display: flex;
+  gap: 0.75rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Global button style */
+.btn {
+  padding: 0.75rem 1.1rem;
   font-size: 1rem;
   background: var(--button-bg);
   border: 1px solid var(--panel-border);
   color: var(--text-color);
-  border-radius: 8px;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
   box-shadow: 0 0 10px var(--panel-glow);
 }
 
-.overlay .btn:hover {
-  background: var(--button-hover);
-  transform: translateY(-2px);
-}
-
-.overlay .btn:active {
-  background: var(--button-active);
-  transform: translateY(0);
-}
+.btn:hover { background: var(--button-hover); transform: translateY(-2px); }
+.btn:active { background: var(--button-active); transform: translateY(0); }
 
 /* Sidebar styling */
 .sidebar {
-  width: 260px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  color: var(--text-color);
   overflow-y: auto;
   max-height: 100%;
 }
@@ -175,13 +173,13 @@ html, body {
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: 16px;
-  padding: 0.75rem;
+  padding: 0.85rem;
   box-shadow: 0 0 15px var(--panel-glow);
   backdrop-filter: blur(8px);
 }
 
 .panel h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.6rem 0;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1rem;
   text-shadow: 0 0 6px var(--accent-color);
@@ -191,24 +189,64 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
 }
 
 .stats .stat span:last-child {
-  font-weight: 500;
+  font-weight: 600;
   font-family: 'Orbitron', sans-serif;
 }
 
-.controls-desktop ul {
+/* Desktop control panel */
+.controls-desktop .hint-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  font-size: 0.8rem;
+  margin: 0.75rem 0 0 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
-.controls-desktop li {
-  margin-bottom: 0.25rem;
+.controls-desktop .hint-list li { margin-bottom: 0.25rem; }
+
+.control-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.speed-row {
+  margin-top: 0.25rem;
+  padding: 0.65rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+}
+
+.speed-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.speed-val {
+  font-family: 'Orbitron', sans-serif;
+  opacity: 0.95;
+}
+
+.speed-sub {
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Range styling (simple, consistent) */
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-color);
 }
 
 /* Mobile controls layout */
@@ -246,14 +284,8 @@ html, body {
   transition: background 0.2s, transform 0.2s;
 }
 
-.mobile-controls .btn:hover {
-  background: var(--button-hover);
-}
-
-.mobile-controls .btn:active {
-  background: var(--button-active);
-  transform: scale(0.96);
-}
+.mobile-controls .btn:hover { background: var(--button-hover); }
+.mobile-controls .btn:active { background: var(--button-active); transform: scale(0.96); }
 
 @media (max-width: 900px), (pointer: coarse) {
   .sidebar {
@@ -263,24 +295,16 @@ html, body {
     align-items: flex-start;
     gap: 0.5rem;
   }
-  .play-area {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  .controls-desktop {
-    display: none;
-  }
+  .controls-desktop { display: none; }
   .mobile-controls {
     display: flex;
     flex-direction: column;
   }
-  .panel {
-    flex: 1;
-  }
+  .panel { flex: 1; }
 }
 
 /* Focus outlines for accessibility */
-button:focus, canvas:focus {
+button:focus, canvas:focus, input:focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }

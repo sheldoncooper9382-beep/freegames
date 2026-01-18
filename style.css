@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --bg: #000;
+  --neon-pink: #ff2fd0;
+  --neon-blue: #00eaff;
+  --neon-green: #39ff14;
+  --card-bg: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  padding: 50px 20px;
+  border-bottom: 4px solid var(--neon-blue);
+}
+
+.hero h1 {
+  color: var(--neon-pink);
+  font-size: 2rem;
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.subtitle {
+  color: var(--neon-green);
+  margin-top: 15px;
+}
+
+.tagline {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+/* GAMES GRID */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px;
+}
+
+/* GAME CARD */
+.game-card {
+  background: var(--card-bg);
+  border: 3px solid var(--neon-blue);
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.game-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.game-title {
+  font-size: 0.8rem;
+  color: var(--neon-pink);
+}
+
+.game-desc {
+  font-size: 0.6rem;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  font-size: 0.6rem;
+  border-top: 2px solid var(--neon-blue);
+}

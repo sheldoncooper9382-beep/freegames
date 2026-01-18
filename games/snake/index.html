@@ -1,0 +1,66 @@
+<!-- /games/snake/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Premium Snake</title>
+  <!-- Google Fonts: Orbitron for headings, Roboto for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated background behind everything -->
+  <div class="background" aria-hidden="true"></div>
+  <div class="container">
+    <!-- Main play area: board and overlay -->
+    <div class="play-area">
+      <canvas id="board" width="20" height="20" tabindex="0" aria-label="Snake board"></canvas>
+      <!-- Overlay appears on pause or game over -->
+      <div class="overlay hidden" id="overlay" role="dialog" aria-live="polite">
+        <div class="message" id="message"></div>
+        <button id="play-again" class="btn" aria-label="Play again">Play Again</button>
+      </div>
+    </div>
+    <!-- Sidebar for stats and control hints -->
+    <aside class="sidebar">
+      <div class="panel stats" aria-label="Game statistics">
+        <h2>Stats</h2>
+        <div class="stat"><span>Score</span><span id="score">0</span></div>
+        <div class="stat"><span>Level</span><span id="level">1</span></div>
+        <div class="stat"><span>Length</span><span id="length">3</span></div>
+        <div class="stat"><span>High</span><span id="high-score">0</span></div>
+      </div>
+      <!-- Desktop control hints; hidden on mobile via CSS -->
+      <div class="panel controls-desktop" aria-label="Desktop controls">
+        <h2>Controls</h2>
+        <ul>
+          <li><strong>Move</strong>: Arrow keys</li>
+          <li><strong>Pause</strong>: P</li>
+          <li><strong>Restart</strong>: R</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <!-- On‑screen controls for mobile devices; hidden on desktop via CSS -->
+  <div class="mobile-controls" id="mobile-controls" aria-hidden="true">
+    <div class="row">
+      <button class="btn control-btn" id="btn-up" aria-label="Move up">↑</button>
+    </div>
+    <div class="row">
+      <button class="btn control-btn" id="btn-left" aria-label="Move left">←</button>
+      <button class="btn control-btn" id="btn-pause" aria-label="Pause">⏸</button>
+      <button class="btn control-btn" id="btn-right" aria-label="Move right">→</button>
+    </div>
+    <div class="row">
+      <button class="btn control-btn" id="btn-down" aria-label="Move down">↓</button>
+    </div>
+    <div class="row">
+      <button class="btn control-btn" id="btn-restart" aria-label="Restart">⟲</button>
+    </div>
+  </div>
+  <script defer src="game.js"></script>
+</body>
+</html>

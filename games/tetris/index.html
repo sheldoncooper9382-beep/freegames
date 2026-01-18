@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tetris</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <header class="topbar glass">
+    <div class="left">
+      <div class="logo">🧱</div>
+      <div class="titles">
+        <div class="h1">Tetris</div>
+        <div class="sub">Modern • Smooth • Glass</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <a class="btn ghost" href="../../index.html">← Back</a>
+      <button class="btn" id="btnPause" type="button">Pause</button>
+      <button class="btn" id="btnRestart" type="button">Restart</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="board glass">
+      <canvas id="game" width="360" height="720" aria-label="Tetris game board"></canvas>
+
+      <div class="boardOverlay" id="overlay" hidden>
+        <div class="overlayCard glass">
+          <div class="overlayTitle" id="overlayTitle">Paused</div>
+          <div class="overlayText" id="overlayText">Press P to resume</div>
+          <div class="overlayBtns">
+            <button class="btn" id="btnResume" type="button">Resume</button>
+            <button class="btn ghost" id="btnOverlayRestart" type="button">Restart</button>
+          </div>
+          <div class="overlayHint">Controls: ← →, ↑ rotate, Z rotate CCW, Space hard drop, C hold</div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="panel glass">
+        <div class="panelTitle">Stats</div>
+        <div class="stats">
+          <div class="stat"><span>Score</span><b id="score">0</b></div>
+          <div class="stat"><span>Lines</span><b id="lines">0</b></div>
+          <div class="stat"><span>Level</span><b id="level">1</b></div>
+          <div class="stat"><span>Best</span><b id="best">0</b></div>
+        </div>
+      </div>
+
+      <div class="panel glass">
+        <div class="panelTitle">Next</div>
+        <div class="row">
+          <div class="mini">
+            <canvas id="next1" width="120" height="120" aria-label="Next piece 1"></canvas>
+            <div class="miniLabel">1</div>
+          </div>
+          <div class="mini">
+            <canvas id="next2" width="120" height="120" aria-label="Next piece 2"></canvas>
+            <div class="miniLabel">2</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mini">
+            <canvas id="next3" width="120" height="120" aria-label="Next piece 3"></canvas>
+            <div class="miniLabel">3</div>
+          </div>
+          <div class="mini">
+            <canvas id="next4" width="120" height="120" aria-label="Next piece 4"></canvas>
+            <div class="miniLabel">4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel glass">
+        <div class="panelTitle">Hold</div>
+        <div class="holdWrap">
+          <canvas id="hold" width="140" height="140" aria-label="Hold piece"></canvas>
+          <div class="hint">Press <b>C</b> to hold</div>
+        </div>
+      </div>
+
+      <div class="panel glass help">
+        <div class="panelTitle">Controls</div>
+        <div class="grid2">
+          <div><b>Move</b></div><div>← →</div>
+          <div><b>Soft drop</b></div><div>↓</div>
+          <div><b>Hard drop</b></div><div>Space</div>
+          <div><b>Rotate</b></div><div>↑ / X</div>
+          <div><b>Rotate CCW</b></div><div>Z</div>
+          <div><b>Hold</b></div><div>C</div>
+          <div><b>Pause</b></div><div>P</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Mobile controls -->
+  <nav class="touch glass" aria-label="Touch controls">
+    <button class="tbtn" data-act="left">◀</button>
+    <button class="tbtn" data-act="right">▶</button>
+    <button class="tbtn" data-act="down">▼</button>
+    <button class="tbtn" data-act="rotate">⟲</button>
+    <button class="tbtn" data-act="hold">H</button>
+    <button class="tbtn" data-act="drop">⬇︎</button>
+    <button class="tbtn" data-act="pause">P</button>
+  </nav>
+
+  <script src="./tetris.js"></script>
+</body>
+</html>

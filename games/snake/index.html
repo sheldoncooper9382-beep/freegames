@@ -5,26 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Premium Snake</title>
-  <!-- Google Fonts: Orbitron for headings, Roboto for body text -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Animated background behind everything -->
   <div class="background" aria-hidden="true"></div>
+
   <div class="container">
-    <!-- Main play area: board and overlay -->
     <div class="play-area">
       <canvas id="board" width="20" height="20" tabindex="0" aria-label="Snake board"></canvas>
-      <!-- Overlay appears on pause or game over -->
+
+      <!-- Overlay appears on start / pause / game over -->
       <div class="overlay hidden" id="overlay" role="dialog" aria-live="polite">
         <div class="message" id="message"></div>
-        <button id="play-again" class="btn" aria-label="Play again">Play Again</button>
+
+        <div class="overlay-actions">
+          <button id="start-game" class="btn" aria-label="Start game">Start</button>
+          <button id="play-again" class="btn" aria-label="Play again">Play Again</button>
+        </div>
+
+        <div class="overlay-hint" id="overlay-hint">
+          <span>Arrow keys / Swipe</span>
+          <span>Pause: P</span>
+          <span>Restart: R</span>
+        </div>
       </div>
     </div>
-    <!-- Sidebar for stats and control hints -->
+
     <aside class="sidebar">
       <div class="panel stats" aria-label="Game statistics">
         <h2>Stats</h2>
@@ -33,10 +44,26 @@
         <div class="stat"><span>Length</span><span id="length">3</span></div>
         <div class="stat"><span>High</span><span id="high-score">0</span></div>
       </div>
-      <!-- Desktop control hints; hidden on mobile via CSS -->
+
       <div class="panel controls-desktop" aria-label="Desktop controls">
         <h2>Controls</h2>
-        <ul>
+
+        <div class="speed-row">
+          <div class="speed-top">
+            <span>Speed</span>
+            <span class="speed-val"><span id="speed-value">200</span>ms</span>
+          </div>
+          <input id="speed" type="range" min="60" max="300" step="10" value="200" aria-label="Speed control">
+          <div class="speed-sub">Lower = faster</div>
+        </div>
+
+        <div class="control-actions">
+          <button class="btn" id="start-btn" aria-label="Start game">Start</button>
+          <button class="btn" id="pause-btn" aria-label="Pause or resume">Pause</button>
+          <button class="btn" id="restart-btn" aria-label="Restart game">Restart</button>
+        </div>
+
+        <ul class="hint-list">
           <li><strong>Move</strong>: Arrow keys</li>
           <li><strong>Pause</strong>: P</li>
           <li><strong>Restart</strong>: R</li>
@@ -44,8 +71,9 @@
       </div>
     </aside>
   </div>
-  <!-- On‑screen controls for mobile devices; hidden on desktop via CSS -->
-  <div class="mobile-controls" id="mobile-controls" aria-hidden="true">
+
+  <!-- Mobile controls -->
+  <div class="mobile-controls" id="mobile-controls">
     <div class="row">
       <button class="btn control-btn" id="btn-up" aria-label="Move up">↑</button>
     </div>
@@ -61,6 +89,7 @@
       <button class="btn control-btn" id="btn-restart" aria-label="Restart">⟲</button>
     </div>
   </div>
+
   <script defer src="game.js"></script>
 </body>
 </html>

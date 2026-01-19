@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Invaders – Ultimate Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--
+    The canvas is used for all of the game rendering.  It sits behind
+    any overlay user‐interface elements.  Canvas dimensions are set
+    from script based on the current window size.
+  -->
+  <div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+      <!-- CRT overlay is injected via CSS and toggled via JS -->
+      <div id="crtOverlay" class="hidden"></div>
+    <!-- HUD overlay shown during gameplay -->
+    <div id="hud" class="hidden">
+      <div id="scoreboard">
+        <span id="scoreLabel">Score:</span><span id="scoreValue">0</span>
+        &nbsp;&nbsp;
+        <span id="highScoreLabel">High:</span><span id="highScoreValue">0</span>
+        &nbsp;&nbsp;
+        <span id="livesLabel">Lives:</span><span id="livesValue">3</span>
+        &nbsp;&nbsp;
+        <span id="levelLabel">Level:</span><span id="levelValue">1</span>
+      </div>
+    </div>
+    <!-- Start screen shown initially -->
+    <div id="startScreen" class="overlay">
+      <h1 class="title neon">Space&nbsp;Invaders</h1>
+      <h2 class="subtitle">Ultimate&nbsp;Edition</h2>
+      <p class="tagline">A faithful recreation with modern upgrades</p>
+      <div class="modeSelect">
+        <button id="classicModeBtn" class="btn">Classic Mode</button>
+        <button id="enhancedModeBtn" class="btn">Enhanced Mode</button>
+      </div>
+      <p class="footer">Use ← → to move &nbsp;•&nbsp; Space to shoot</p>
+    </div>
+    <!-- Pause overlay shown when game is paused -->
+    <div id="pauseOverlay" class="overlay hidden">
+      <h2 class="subtitle">Paused</h2>
+      <button id="resumeBtn" class="btn">Resume</button>
+      <button id="restartBtn" class="btn">Restart</button>
+      <div class="settings">
+        <label>Music Vol<br><input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5"></label>
+        <label>Game Speed<br><input type="range" id="speedSlider" min="0.5" max="1.5" step="0.1" value="1"></label>
+        <label><input type="checkbox" id="reducedMotionCheckbox"> Reduced Motion</label>
+        <label><input type="checkbox" id="colorblindCheckbox"> Colorblind Friendly</label>
+        <label><input type="checkbox" id="crtCheckbox"> CRT Shader</label>
+      </div>
+    </div>
+    <!-- Game over overlay shown at the end -->
+    <div id="gameOverScreen" class="overlay hidden">
+      <h2 class="subtitle">Game Over</h2>
+      <p id="finalScore"></p>
+      <p id="finalStats"></p>
+      <button id="playAgainBtn" class="btn">Play Again</button>
+    </div>
+    <!-- Touch controls for mobile devices -->
+    <div id="touchControls" class="hidden">
+      <button id="leftBtn" class="touchBtn">◄</button>
+      <button id="fireBtn" class="touchBtn">•</button>
+      <button id="rightBtn" class="touchBtn">►</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

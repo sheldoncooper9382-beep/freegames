@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Breakout — Glassmorphic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <main class="app" role="application" aria-label="Breakout game">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">◼︎</div>
+        <div>
+          <h1>Breakout</h1>
+          <p class="sub">Glassmorphic • desktop + mobile</p>
+        </div>
+      </div>
+
+      <div class="hud">
+        <div class="pill"><span class="k">Score</span><span id="score">0</span></div>
+        <div class="pill"><span class="k">Lives</span><span id="lives">3</span></div>
+        <div class="pill"><span class="k">Level</span><span id="level">1</span></div>
+      </div>
+    </header>
+
+    <section class="stage">
+      <div class="board glass">
+        <canvas id="game" width="900" height="540" aria-label="Game canvas"></canvas>
+
+        <div class="overlay" id="overlay" aria-live="polite">
+          <div class="panel glass">
+            <h2 id="overlayTitle">Breakout</h2>
+            <p id="overlayText">
+              Move the paddle, break the bricks, don’t drop the ball.
+            </p>
+
+            <div class="cta">
+              <button id="startBtn" class="btn primary">Start</button>
+              <button id="howBtn" class="btn">How to play</button>
+            </div>
+
+            <div class="hint" id="hint">
+              Desktop: <b>← →</b> or <b>A/D</b>, <b>Space</b> to launch •
+              Mobile: drag/touch to move, tap <b>Launch</b>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side glass">
+        <div class="sideSection">
+          <h3>Controls</h3>
+          <ul>
+            <li><b>Move</b>: ← → / A D</li>
+            <li><b>Launch</b>: Space / Button</li>
+            <li><b>Pause</b>: P</li>
+            <li><b>Restart</b>: R</li>
+          </ul>
+        </div>
+
+        <div class="sideSection">
+          <h3>Powerups</h3>
+          <div class="chips">
+            <span class="chip">Widen</span>
+            <span class="chip">Slow</span>
+            <span class="chip">Multi</span>
+            <span class="chip">Laser</span>
+          </div>
+          <p class="muted">
+            Some bricks drop bonuses. Catch them with your paddle.
+          </p>
+        </div>
+
+        <div class="sideSection">
+          <h3>Mobile</h3>
+          <p class="muted">Use the on-screen buttons below the board.</p>
+          <div class="mobileRow">
+            <button id="pauseBtn" class="btn">Pause</button>
+            <button id="launchBtn" class="btn primary">Launch</button>
+            <button id="restartBtn" class="btn">Restart</button>
+          </div>
+        </div>
+
+        <div class="sideSection tiny">
+          <span class="dot"></span>
+          <span>Tip: aim with the paddle edge for sharper angles.</span>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <span>© FreeToolHub Games</span>
+      <span class="sep">•</span>
+      <span class="muted">Glass UI, smooth physics, touch-friendly</span>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

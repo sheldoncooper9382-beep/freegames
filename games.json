@@ -3,7 +3,6 @@
   { "title": "Snake", "description": "Eat, grow, survive", "icon": "🐍", "path": "games/snake/index.html" },
   { "title": "Pong", "description": "Classic paddle duel", "icon": "🏓", "path": "games/pong/index.html" },
   { "title": "Breakout", "description": "Smash every brick", "icon": "🧱", "path": "games/breakout/index.html" },
-  { "title": "Space Invaders", "description": "Defend the galaxy", "icon": "👾", "path": "games/space-invaders/index.html" }
+  { "title": "Space Invaders", "description": "Defend the galaxy", "icon": "👾", "path": "games/space-invaders/index.html" },
   { "title": "Solitaire", "description": "Classic Klondike card game", "icon": "🃏", "path": "games/solitaire/index.html" }
-
 ]

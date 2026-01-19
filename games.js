@@ -1,16 +1,19 @@
-const games = [
-  { title: "Tetris", description: "Stack blocks and clear lines", icon: "🟦", path: "games/tetris/index.html" },
-  { title: "Snake", description: "Eat, grow, survive", icon: "🐍", path: "games/snake/index.html" },
-  { title: "Pong", description: "Classic paddle duel", icon: "🏓", path: "games/pong/index.html" },
-  { title: "Breakout", description: "Smash every brick", icon: "🧱", path: "games/breakout/index.html" },
-  { title: "Space Invaders", description: "Defend the galaxy", icon: "👾", path: "games/space-invaders/index.html" }
-];
+let games = [];
 
 const grid = document.getElementById("gamesGrid");
 const searchInput = document.getElementById("searchInput");
 const statsText = document.getElementById("statsText");
 const emptyState = document.getElementById("emptyState");
 const clearBtn = document.getElementById("clearBtn");
+
+function escapeHTML(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 function render(list) {
   grid.innerHTML = "";
@@ -26,9 +29,9 @@ function render(list) {
     });
 
     card.innerHTML = `
-      <div class="game-icon" aria-hidden="true">${game.icon}</div>
-      <div class="game-title">${escapeHTML(game.title)}</div>
-      <div class="game-desc">${escapeHTML(game.description)}</div>
+      <div class="game-icon" aria-hidden="true">${game.icon || "🎮"}</div>
+      <div class="game-title">${escapeHTML(game.title || "Untitled")}</div>
+      <div class="game-desc">${escapeHTML(game.description || "")}</div>
     `;
 
     grid.appendChild(card);
@@ -36,10 +39,10 @@ function render(list) {
 
   const total = games.length;
   const shown = list.length;
-  statsText.textContent = `${shown} / ${total} games`;
+  if (statsText) statsText.textContent = `${shown} / ${total} games`;
 
   const isEmpty = shown === 0;
-  emptyState.hidden = !isEmpty;
+  if (emptyState) emptyState.hidden = !isEmpty;
   grid.style.display = isEmpty ? "none" : "grid";
 }
 
@@ -53,18 +56,34 @@ function applySearch() {
   render(filtered);
 }
 
-function escapeHTML(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+async function loadGames() {
+  try {
+    // If games.json is next to index.html, this is correct:
+    // - root/index.html -> fetch("games.json")
+    // - root/games.json exists
+    const res = await fetch("games.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} loading games.json`);
+
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("games.json must be an array");
+
+    games = data;
+    render(games);
+  } catch (err) {
+    console.error(err);
+    // graceful fallback UI:
+    games = [];
+    render([]);
+    if (statsText) statsText.textContent = "0 / 0 games";
+    if (emptyState) {
+      emptyState.hidden = false;
+      emptyState.textContent = "Could not load games.json. Check file path + JSON format.";
+    }
+  }
 }
 
-if (searchInput) {
-  searchInput.addEventListener("input", applySearch);
-}
+// Wire up events
+if (searchInput) searchInput.addEventListener("input", applySearch);
 
 if (clearBtn) {
   clearBtn.addEventListener("click", () => {
@@ -74,5 +93,5 @@ if (clearBtn) {
   });
 }
 
-// initial render
-render(games);
+// Start
+loadGames();

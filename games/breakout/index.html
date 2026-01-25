@@ -1,107 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Breakout — Glassmorphic</title>
+  <title>Breakout Neon Glass</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
+  <div class="bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
     <div class="noise"></div>
   </div>
 
-  <main class="app" role="application" aria-label="Breakout game">
-    <header class="topbar">
+  <main class="wrap">
+    <header class="top">
       <div class="brand">
-        <div class="logo" aria-hidden="true">◼︎</div>
+        <div class="logo" aria-hidden="true">◈</div>
         <div>
-          <h1>Breakout</h1>
-          <p class="sub">Glassmorphic • desktop + mobile</p>
+          <h1>Breakout: Neon Glass</h1>
+          <p class="sub">Modern breakout with powerups, combos, particles, and generated SFX.</p>
         </div>
       </div>
 
+      <div class="topActions">
+        <button id="btnStart" class="btn primary" type="button">Start</button>
+        <button id="btnPause" class="btn ghost" type="button">Pause</button>
+        <button id="btnReset" class="btn ghost" type="button">Reset</button>
+      </div>
+    </header>
+
+    <section class="panel">
       <div class="hud">
         <div class="pill"><span class="k">Score</span><span id="score">0</span></div>
         <div class="pill"><span class="k">Lives</span><span id="lives">3</span></div>
         <div class="pill"><span class="k">Level</span><span id="level">1</span></div>
+        <div class="pill"><span class="k">Combo</span><span id="combo">x1</span></div>
+
+        <div class="spacer"></div>
+
+        <label class="toggle">
+          <input id="soundOn" type="checkbox" checked />
+          <span>Sound</span>
+        </label>
+
+        <button id="btnSfx" class="btn ghost" type="button" title="Generate & download WAV sound effects">
+          Download SFX (WAV)
+        </button>
       </div>
-    </header>
 
-    <section class="stage">
-      <div class="board glass">
-        <canvas id="game" width="900" height="540" aria-label="Game canvas"></canvas>
+      <div class="stage">
+        <canvas id="c"></canvas>
 
-        <div class="overlay" id="overlay" aria-live="polite">
-          <div class="panel glass">
-            <h2 id="overlayTitle">Breakout</h2>
-            <p id="overlayText">
-              Move the paddle, break the bricks, don’t drop the ball.
+        <div class="overlay" id="overlay">
+          <div class="card">
+            <h2 id="ovTitle">Ready?</h2>
+            <p id="ovText">
+              Move with <b>Mouse</b> or <b>A/D</b> (← →). Launch with <b>Space</b>. Catch powerups.
             </p>
-
-            <div class="cta">
-              <button id="startBtn" class="btn primary">Start</button>
-              <button id="howBtn" class="btn">How to play</button>
+            <div class="ovRow">
+              <button id="btnOverlayStart" class="btn primary" type="button">Play</button>
+              <button id="btnOverlayHow" class="btn ghost" type="button">Controls</button>
             </div>
-
-            <div class="hint" id="hint">
-              Desktop: <b>← →</b> or <b>A/D</b>, <b>Space</b> to launch •
-              Mobile: drag/touch to move, tap <b>Launch</b>.
+            <div class="help" id="help">
+              <div class="helpRow"><span class="tag">Mouse</span> Move paddle</div>
+              <div class="helpRow"><span class="tag">A / D</span> Move paddle</div>
+              <div class="helpRow"><span class="tag">Space</span> Launch / Confirm</div>
+              <div class="helpRow"><span class="tag">P</span> Pause</div>
+              <div class="helpRow"><span class="tag">R</span> Reset</div>
             </div>
           </div>
         </div>
       </div>
 
-      <aside class="side glass">
-        <div class="sideSection">
-          <h3>Controls</h3>
-          <ul>
-            <li><b>Move</b>: ← → / A D</li>
-            <li><b>Launch</b>: Space / Button</li>
-            <li><b>Pause</b>: P</li>
-            <li><b>Restart</b>: R</li>
-          </ul>
+      <footer class="foot">
+        <div class="hint">
+          Tip: keep combos alive by not letting the ball touch the paddle too often—aim for clean brick chains.
         </div>
-
-        <div class="sideSection">
-          <h3>Powerups</h3>
-          <div class="chips">
-            <span class="chip">Widen</span>
-            <span class="chip">Slow</span>
-            <span class="chip">Multi</span>
-            <span class="chip">Laser</span>
-          </div>
-          <p class="muted">
-            Some bricks drop bonuses. Catch them with your paddle.
-          </p>
+        <div class="mini">
+          Powerups: <span class="chip">Multi-ball</span>
+          <span class="chip">Laser</span>
+          <span class="chip">Widen</span>
+          <span class="chip">Slow</span>
+          <span class="chip bad">Shrink</span>
+          <span class="chip bad">Fast</span>
         </div>
-
-        <div class="sideSection">
-          <h3>Mobile</h3>
-          <p class="muted">Use the on-screen buttons below the board.</p>
-          <div class="mobileRow">
-            <button id="pauseBtn" class="btn">Pause</button>
-            <button id="launchBtn" class="btn primary">Launch</button>
-            <button id="restartBtn" class="btn">Restart</button>
-          </div>
-        </div>
-
-        <div class="sideSection tiny">
-          <span class="dot"></span>
-          <span>Tip: aim with the paddle edge for sharper angles.</span>
-        </div>
-      </aside>
+      </footer>
     </section>
-
-    <footer class="footer">
-      <span>© FreeToolHub Games</span>
-      <span class="sep">•</span>
-      <span class="muted">Glass UI, smooth physics, touch-friendly</span>
-    </footer>
   </main>
 
-  <script src="game.js"></script>
+  <script defer src="game.js"></script>
 </body>
 </html>

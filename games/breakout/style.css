@@ -1,0 +1,132 @@
+/* Modern Breakout Game Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at 50% 25%, #1c1e2f 0%, #0b0c15 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f7fa;
+}
+
+#gameContainer {
+  position: relative;
+  width: 800px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px #08f, 0 0 20px #0ff;
+}
+
+#scoreboard {
+  display: flex;
+  gap: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e3f8ff;
+  text-shadow: 0 0 5px #08f;
+}
+
+canvas {
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(28,30,47,0.8), rgba(12,16,24,0.9));
+  box-shadow: 0 0 20px rgba(0,255,255,0.4), 0 0 40px rgba(0,128,255,0.3);
+}
+
+/* Overlay screens */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 16, 24, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 10;
+}
+
+/* Show start screen by default, hide game‑over screen */
+#startScreen {
+  display: flex;
+}
+
+#gameOverScreen {
+  display: none;
+}
+
+.overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #f0f, 0 0 20px #a0f;
+}
+
+.overlay p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.overlay button {
+  font-family: inherit;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #0af, #08f, #0af);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 128, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.overlay button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 128, 255, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  #scoreboard {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .overlay h2 {
+    font-size: 1.8rem;
+  }
+  .overlay p {
+    font-size: 1rem;
+  }
+  .overlay button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}

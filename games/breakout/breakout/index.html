@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Breakout Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="gameContainer">
+    <header>
+      <h1>Breakout</h1>
+      <div id="scoreboard">
+        <span id="score">Score: 0</span>
+        <span id="lives">Lives: 3</span>
+      </div>
+    </header>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="startScreen" class="overlay">
+      <h2>Welcome to Breakout!</h2>
+      <p>Use your mouse or keyboard (← and → arrows) to control the paddle.</p>
+      <p>Break all the bricks to win. Don’t let the ball fall!</p>
+      <button id="startButton">Play</button>
+    </div>
+    <div id="gameOverScreen" class="overlay">
+      <h2 id="gameOverTitle"></h2>
+      <p id="finalScore"></p>
+      <button id="restartButton">Play Again</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+@import url('https://fonts.cdnfonts.com/css/depixel');
+
+.master-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100% !important;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('images/bg.jpg'); */
+    background-image: url('images/site_bg.png');
+    background-position: center;
+    height: 550px;
+    color: white;
+    background-color: black;
+    font-size: 35px;
+    text-shadow: rgb(39, 39, 39) 3px 3px;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'DePixel', sans-serif;
+}
+
+html{
+    height: 100%;
+    background-color: black;
+}
+
+.game-container{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./images/bgGif.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    width: 700px;
+}
+
+canvas{
+    position: absolute;
+    height: 100%;
+}
+
+.menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background-color: rgba(0, 0, 0, 0); */
+    position: absolute;
+}
+
+.menu-item{
+    background-color: rgb(59, 59, 59);
+    padding: 20px;
+    width: 420px;
+    /* background-color: rgba(89, 244, 254, 1); */
+}
+
+.menu-item:hover{
+    cursor: pointer;
+    text-shadow: black 5px 5px;
+    font-weight: bold;
+}
+
+canvas{
+    image-rendering: pixelated; 
+    /* Once we have final assets, we may want to just use pixellated if we are loosing detail */
+    /* image-rendering: crisp-edges; */
+    /* image-rendering: -webkit-optimize-contrast; */
+}
+
+.score{
+    font-size: 25px;
+    color: white;
+    background-color: rgb(59, 59, 59);
+}
+
+#high-scores-display{
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.high-scores-list{
+    width: 330px;
+    background: "#59f4ff";
+}
+
+#clear-high-scores{
+    margin-top: 30px;
+}
+
+.credits-p{
+    font-size: 30px;
+    width: 400px;
+    background-color: rgb(59, 59, 59);
+    padding: 15px;
+}
+
+#back-button{
+    position: absolute;
+    margin-top: 680px;
+    text-align: center;
+}
+
+.controls-item{
+    width: 500px;
+}
+
+#controls-menu{
+    background-color: rgb(59, 59, 59);
+    font-size: 25px;
+}
+
+#game-over{
+    background-color: rgb(59, 59, 59);
+    padding: 30px;
+}

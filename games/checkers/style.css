@@ -237,11 +237,6 @@ h1{ margin:0; font-size: 18px; letter-spacing:.3px;}
   pointer-events:none;
 }
 
-.square.focus{
-  outline: 2px solid rgba(102,247,255,.35);
-  outline-offset: -2px;
-}
-
 .piece{
   width: 76%;
   aspect-ratio: 1/1;
@@ -301,7 +296,6 @@ h1{ margin:0; font-size: 18px; letter-spacing:.3px;}
   border: 1px solid rgba(255,77,122,.40);
   box-shadow: 0 0 0 10px rgba(255,77,122,.06), 0 16px 26px rgba(0,0,0,.25);
 }
-
 @keyframes pulse{
   0%,100%{ transform: scale(1); opacity:.92; }
   50%{ transform: scale(1.06); opacity:.75; }
@@ -360,10 +354,7 @@ h1{ margin:0; font-size: 18px; letter-spacing:.3px;}
   background: rgba(255,255,255,.12);
   margin: 14px 0;
 }
-.state{
-  display:grid;
-  gap:10px;
-}
+.state{ display:grid; gap:10px; }
 .state .row{
   display:flex;
   align-items:center;
@@ -375,6 +366,45 @@ h1{ margin:0; font-size: 18px; letter-spacing:.3px;}
   color: var(--muted);
 }
 .tip{ padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); }
+
+.mode{ display:grid; gap:10px; }
+.radio{
+  display:flex; gap:8px; align-items:center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--muted);
+  user-select:none;
+}
+.radio input{ accent-color: var(--accent); }
+
+.aiBox{
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.12);
+  display:grid;
+  gap:10px;
+}
+.aiBox .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  color: var(--muted);
+}
+.aiBox select{
+  width: 160px;
+  max-width: 55vw;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.9);
+  outline: none;
+}
+.aiBox select option{ color:#111; }
 
 .modal{
   position:fixed;

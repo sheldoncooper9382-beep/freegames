@@ -2,74 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pac-Man (Classic Style) — Vanilla JS</title>
+  <title>Pac-Man</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="bg">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
-    <div class="noise"></div>
-  </div>
+  <canvas id="game" width="224" height="288"></canvas>
 
-  <main class="app">
-    <header class="top">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">◍</div>
-        <div>
-          <h1>Pac-Man</h1>
-          <p class="sub">Classic arcade vibes — vanilla HTML/CSS/JS.</p>
-        </div>
-      </div>
-
-      <div class="hud">
-        <div class="pill"><span class="k">Score</span><span id="score" class="v">0</span></div>
-        <div class="pill"><span class="k">High</span><span id="high" class="v">0</span></div>
-        <div class="pill"><span class="k">Lives</span><span id="lives" class="v">3</span></div>
-        <div class="pill"><span class="k">Level</span><span id="level" class="v">1</span></div>
-      </div>
-    </header>
-
-    <section class="stage">
-      <canvas id="game" width="672" height="744" aria-label="Pac-Man game canvas"></canvas>
-
-      <div class="panel">
-        <div class="row">
-          <button id="btnStart" class="btn primary" type="button">Start</button>
-          <button id="btnPause" class="btn ghost" type="button">Pause</button>
-          <button id="btnRestart" class="btn ghost" type="button">Restart</button>
-        </div>
-
-        <div class="help">
-          <div class="chip">Move: <b>Arrow Keys</b> / <b>WASD</b></div>
-          <div class="chip">Pause: <b>P</b></div>
-          <div class="chip">Mute: <b>M</b></div>
-        </div>
-
-        <div class="mobile">
-          <div class="dpad">
-            <button class="dpad-btn" data-dir="up" aria-label="Up">▲</button>
-            <div class="mid">
-              <button class="dpad-btn" data-dir="left" aria-label="Left">◀</button>
-              <button class="dpad-btn" data-dir="down" aria-label="Down">▼</button>
-              <button class="dpad-btn" data-dir="right" aria-label="Right">▶</button>
-            </div>
-          </div>
-        </div>
-
-        <div id="toast" class="toast" role="status" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <footer class="foot">
-      <span>Tip: Eat a big pellet to scare ghosts.</span>
-      <span class="sep">•</span>
-      <span>Made for GitHub Pages — no libraries.</span>
-    </footer>
-  </main>
-
-  <script src="app.js"></script>
+  <script src="pacman.js"></script>
 </body>
 </html>

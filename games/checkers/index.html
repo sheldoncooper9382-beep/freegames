@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Checkers — Red vs Black</title>
+  <title>Checkers — Red vs Black (Human / AI)</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,7 +21,10 @@
         <div class="logo" aria-hidden="true">◎</div>
         <div>
           <h1>Checkers</h1>
-          <p class="sub">Traditional <b class="red">Red</b> vs <b class="blk">Black</b>. Tap/click to move. Kings can move backward.</p>
+          <p class="sub">
+            Traditional <b class="red">Red</b> vs <b class="blk">Black</b>.
+            Play <b>Human vs Human</b> or <b>Human vs AI</b>.
+          </p>
         </div>
       </div>
 
@@ -85,14 +88,45 @@
       </div>
 
       <aside class="card side">
-        <h2>How to play</h2>
-        <ul>
-          <li>Select one of your pieces.</li>
-          <li>Move diagonally to an adjacent dark square.</li>
-          <li>Capture by jumping over an opponent piece to an empty square.</li>
-          <li>If captures are enabled, you must capture when available.</li>
-          <li>When a piece reaches the last row, it becomes a <b>King</b>.</li>
-        </ul>
+        <h2>Mode</h2>
+
+        <div class="mode">
+          <label class="radio">
+            <input type="radio" name="mode" id="modeHuman" checked />
+            <span>Human vs Human</span>
+          </label>
+
+          <label class="radio">
+            <input type="radio" name="mode" id="modeAI" />
+            <span>Human vs AI</span>
+          </label>
+
+          <div class="aiBox">
+            <div class="row">
+              <span>AI plays</span>
+              <select id="aiSide">
+                <option value="black" selected>Black</option>
+                <option value="red">Red</option>
+              </select>
+            </div>
+            <div class="row">
+              <span>Difficulty</span>
+              <select id="aiDifficulty">
+                <option value="easy" selected>Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+            <div class="row">
+              <span>AI delay</span>
+              <select id="aiDelay">
+                <option value="200">Fast</option>
+                <option value="450" selected>Normal</option>
+                <option value="750">Slow</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
         <div class="divider"></div>
 
@@ -107,13 +141,12 @@
 
         <h2>Tips</h2>
         <p class="tip">
-          If you see glowing targets, those are legal moves. Captures will glow stronger.
+          If you see glowing targets, those are legal moves. Captures glow stronger. In AI mode, you control the other color.
         </p>
       </aside>
     </section>
   </main>
 
-  <!-- Rules / Game Over modal -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modalHead">

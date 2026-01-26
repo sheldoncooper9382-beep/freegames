@@ -5,5 +5,43 @@
   { "title": "Breakout", "description": "Smash every brick", "icon": "🧱", "path": "games/breakout/index.html" },
   { "title": "Space Invaders", "description": "Defend the galaxy", "icon": "👾", "path": "games/space-invaders/index.html" },
   { "title": "Solitaire", "description": "Classic Klondike card game", "icon": "🃏", "path": "games/solitaire/index.html" },
-  { "title": "Pack-MAN", "description": "Classic Pac-Man game", "icon": "🟡", "path": "games/pacman/index.html" }
+  { "title": "Pack-MAN", "description": "Classic Pac-Man game", "icon": "🟡", "path": "games/pacman/index.html" },
+
+  { "title": "Asteroids", "description": "Destroy drifting asteroids", "icon": "☄️", "path": "games/asteroids/index.html" },
+  { "title": "Frogger", "description": "Cross roads and rivers safely", "icon": "🐸", "path": "games/frogger/index.html" },
+  { "title": "Galaga", "description": "Arcade space shooter", "icon": "🚀", "path": "games/galaga/index.html" },
+  { "title": "Missile Command", "description": "Defend cities from missiles", "icon": "💥", "path": "games/missile-command/index.html" },
+
+  { "title": "Chess", "description": "Classic strategy board game", "icon": "♟️", "path": "games/chess/index.html" },
+  { "title": "Checkers", "description": "Capture all opponent pieces", "icon": "🔴", "path": "games/checkers/index.html" },
+  { "title": "Connect Four", "description": "Four in a row wins", "icon": "🟡", "path": "games/connect-four/index.html" },
+  { "title": "Sudoku", "description": "Number logic puzzle", "icon": "🔢", "path": "games/sudoku/index.html" },
+  { "title": "Minesweeper", "description": "Avoid the hidden mines", "icon": "💣", "path": "games/minesweeper/index.html" },
+  { "title": "2048", "description": "Merge tiles to reach 2048", "icon": "🔲", "path": "games/2048/index.html" },
+
+  { "title": "Blackjack", "description": "Beat the dealer to 21", "icon": "🂡", "path": "games/blackjack/index.html" },
+  { "title": "Poker", "description": "Texas Hold'em poker", "icon": "♠️", "path": "games/poker/index.html" },
+  { "title": "Memory Match", "description": "Match all card pairs", "icon": "🧠", "path": "games/memory/index.html" },
+  { "title": "UNO Style", "description": "Color and number card game", "icon": "🎴", "path": "games/uno/index.html" },
+
+  { "title": "Endless Runner", "description": "Run and dodge obstacles", "icon": "🏃", "path": "games/endless-runner/index.html" },
+  { "title": "Top-Down Shooter", "description": "Survive waves of enemies", "icon": "🔫", "path": "games/top-down-shooter/index.html" },
+  { "title": "Bullet Hell", "description": "Extreme dodging challenge", "icon": "🔥", "path": "games/bullet-hell/index.html" },
+  { "title": "Tower Defense", "description": "Stop enemies with towers", "icon": "🏰", "path": "games/tower-defense/index.html" },
+
+  { "title": "Wordle Clone", "description": "Guess the hidden word", "icon": "🟩", "path": "games/wordle/index.html" },
+  { "title": "Match-3", "description": "Match tiles to score", "icon": "💎", "path": "games/match-3/index.html" },
+  { "title": "Sliding Puzzle", "description": "Rearrange tiles correctly", "icon": "🧩", "path": "games/sliding-puzzle/index.html" },
+
+  { "title": "Idle Clicker", "description": "Click and grow infinitely", "icon": "🖱️", "path": "games/idle-clicker/index.html" },
+  { "title": "Idle Factory", "description": "Automate production lines", "icon": "🏭", "path": "games/idle-factory/index.html" },
+  { "title": "Idle Miner", "description": "Mine resources over time", "icon": "⛏️", "path": "games/idle-miner/index.html" },
+
+  { "title": "Typing Speed Test", "description": "Test your typing speed", "icon": "⌨️", "path": "games/typing-test/index.html" },
+  { "title": "Reaction Time", "description": "Measure your reflexes", "icon": "⚡", "path": "games/reaction-time/index.html" },
+  { "title": "Trivia Quiz", "description": "Answer fun trivia questions", "icon": "❓", "path": "games/trivia/index.html" },
+
+  { "title": "Neon Tetris", "description": "Modern glowing Tetris", "icon": "✨", "path": "games/neon-tetris/index.html" },
+  { "title": "Glassmorphic Breakout", "description": "Premium glass-style breakout", "icon": "🫧", "path": "games/glass-breakout/index.html" },
+  { "title": "Cyber Snake", "description": "Futuristic snake game", "icon": "🤖", "path": "games/cyber-snake/index.html" }
 ]

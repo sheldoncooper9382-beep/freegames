@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frogger Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Start Screen Overlay -->
+  <div id="startScreen" class="overlay active">
+    <h1>Frogger</h1>
+    <p class="subtitle">Cross the road and river to earn points. Avoid cars and don’t fall into the water!</p>
+    <button id="startButton" class="primary">Start Game</button>
+  </div>
+
+  <!-- Game Over Overlay -->
+  <div id="gameOverScreen" class="overlay">
+    <h1>Game Over</h1>
+    <p id="finalScore" class="subtitle">Score: 0</p>
+    <button id="restartButton" class="primary">Restart</button>
+  </div>
+
+  <!-- Score Display -->
+  <div id="scoreDisplay">Score: 0&nbsp;&nbsp;Lives: 3</div>
+
+  <!-- Game Canvas -->
+  <canvas id="gameCanvas" width="600" height="600"></canvas>
+
+  <!-- Mobile Controls -->
+  <div id="controls">
+    <div id="upButton" class="control">▲</div>
+    <div id="leftButton" class="control">◄</div>
+    <div id="downButton" class="control">▼</div>
+    <div id="rightButton" class="control">►</div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+/*
+ * Frogger game styles
+ * Modern glassmorphic and neon design for an arcade feel.
+ */
+
+:root {
+  --bg-start: #0a1931;
+  --bg-end: #05080f;
+  --primary: #0ff;
+  --secondary: #f0f;
+  --text-light: #ffffff;
+  --control-size: 60px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-light);
+  background: radial-gradient(circle at center, var(--bg-start), var(--bg-end));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#gameCanvas {
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.2);
+}
+
+/* Score display */
+#scoreDisplay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  z-index: 5;
+}
+
+/* Overlays for start and game over screens */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(10, 15, 30, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.overlay h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+}
+
+.overlay .subtitle {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+/* Primary buttons */
+.primary {
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+}
+
+/* Mobile controls */
+#controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  display: none;
+  grid-template-columns: repeat(3, var(--control-size));
+  grid-template-rows: repeat(2, var(--control-size));
+  gap: 10px;
+  z-index: 15;
+}
+
+.control {
+  width: var(--control-size);
+  height: var(--control-size);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--primary);
+  box-shadow: 0 0 10px var(--primary), inset 0 0 5px var(--primary);
+  user-select: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Position controls in grid */
+#upButton { grid-column: 2 / 3; grid-row: 1 / 2; }
+#leftButton { grid-column: 1 / 2; grid-row: 2 / 3; }
+#downButton { grid-column: 2 / 3; grid-row: 2 / 3; }
+#rightButton { grid-column: 3 / 4; grid-row: 2 / 3; }
+
+/* Show controls on touch devices */
+@media (pointer: coarse) {
+  #controls {
+    display: grid;
+  }
+}

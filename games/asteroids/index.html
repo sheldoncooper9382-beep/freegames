@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Asteroids</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="noise"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">✦</div>
+        <div>
+          <h1>Asteroids</h1>
+          <p class="sub">Thrust, drift, and survive. Split rocks. Chase high score.</p>
+        </div>
+      </div>
+
+      <div class="hud">
+        <div class="pill"><span class="k">Score</span><span id="score">0</span></div>
+        <div class="pill"><span class="k">Lives</span><span id="lives">3</span></div>
+        <div class="pill"><span class="k">Level</span><span id="level">1</span></div>
+        <button id="btnPause" class="btn ghost" type="button" aria-label="Pause">Pause</button>
+      </div>
+    </header>
+
+    <section class="stage">
+      <canvas id="game" width="960" height="540" aria-label="Asteroids game canvas"></canvas>
+
+      <div class="overlay" id="overlay">
+        <div class="card">
+          <h2 id="ovTitle">Asteroids</h2>
+          <p id="ovText">Press <b>Enter</b> to start. On mobile: tap <b>Start</b>.</p>
+
+          <div class="grid2">
+            <div class="hint">
+              <div class="ht">Desktop</div>
+              <div class="hb">
+                <div><b>W</b>/<b>↑</b> Thrust</div>
+                <div><b>A</b>/<b>←</b> Turn left</div>
+                <div><b>D</b>/<b>→</b> Turn right</div>
+                <div><b>Space</b> Shoot</div>
+                <div><b>Shift</b> Hyperspace</div>
+                <div><b>P</b> Pause</div>
+              </div>
+            </div>
+            <div class="hint">
+              <div class="ht">Mobile</div>
+              <div class="hb">
+                <div>Left stick: turn + thrust</div>
+                <div>Buttons: Shoot / Hyper / Pause</div>
+                <div>Works in portrait & landscape</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <button id="btnStart" class="btn primary" type="button">Start</button>
+            <button id="btnHow" class="btn" type="button">How to play</button>
+          </div>
+
+          <div class="small" id="ovSmall">Tip: Use short thrust bursts. Drift is your friend.</div>
+        </div>
+      </div>
+
+      <div class="touch" id="touchUI" aria-hidden="true">
+        <div class="stick">
+          <div class="ring"></div>
+          <div class="knob" id="knob"></div>
+        </div>
+        <div class="tbtns">
+          <button class="tbtn" id="tShoot" type="button">Shoot</button>
+          <button class="tbtn" id="tHyper" type="button">Hyper</button>
+          <button class="tbtn ghost" id="tPause" type="button">Pause</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="keys">
+        <span class="chip">Enter: Start</span>
+        <span class="chip">Space: Shoot</span>
+        <span class="chip">Shift: Hyper</span>
+        <span class="chip">P: Pause</span>
+      </div>
+      <div class="muted">Made with vanilla HTML/CSS/JS • GitHub Pages ready</div>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

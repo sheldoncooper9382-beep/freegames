@@ -1,9 +1,11 @@
-<!doctype html>
+<!-- /index.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Frogger</title>
+  <meta name="theme-color" content="#0b1020" />
+  <title>Frogger Neon</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,61 +14,92 @@
     <div class="orb o2"></div>
     <div class="orb o3"></div>
     <div class="noise"></div>
+    <div class="grid"></div>
   </div>
 
-  <main class="wrap">
-    <header class="top">
+  <header class="hud glass" aria-label="HUD">
+    <div class="hud-left">
       <div class="brand">
-        <div class="logo" aria-hidden="true">🐸</div>
-        <div class="titles">
-          <h1>Frogger</h1>
-          <p class="sub">Cross the road. Ride the logs. Reach the homes.</p>
+        <span class="logo" aria-hidden="true">🐸</span>
+        <div class="titlewrap">
+          <div class="title">FROGGER</div>
+          <div class="subtitle">Neon Arcade</div>
         </div>
       </div>
+    </div>
 
-      <div class="hud">
-        <div class="pill"><span>Score</span><b id="score">0</b></div>
-        <div class="pill"><span>Lives</span><b id="lives">3</b></div>
-        <div class="pill"><span>Level</span><b id="level">1</b></div>
+    <div class="hud-mid">
+      <div class="pill"><span class="k">Score</span><span id="score" class="v">0</span></div>
+      <div class="pill"><span class="k">Level</span><span id="level" class="v">1</span></div>
+      <div class="pill"><span class="k">Lives</span><span id="lives" class="v">3</span></div>
+      <div class="pill time">
+        <span class="k">Time</span>
+        <span class="v"><span id="time" class="v">0</span></span>
+        <div class="bar"><div id="timeBar" class="fill"></div></div>
       </div>
-    </header>
+    </div>
 
-    <section class="stage">
-      <div class="panel">
-        <canvas id="c" width="960" height="720" aria-label="Frogger game canvas"></canvas>
+    <div class="hud-right">
+      <button id="btnPause" class="btn ghost" type="button" aria-label="Pause or resume">Pause</button>
+      <button id="btnRestart" class="btn" type="button" aria-label="Restart">Restart</button>
+    </div>
+  </header>
 
-        <div class="panelBar">
-          <div class="left">
-            <button id="btnStart" class="btn primary" type="button">Start</button>
-            <button id="btnPause" class="btn ghost" type="button">Pause</button>
-            <button id="btnRestart" class="btn ghost" type="button">Restart</button>
-          </div>
-          <div class="right">
-            <button id="btnSound" class="btn ghost" type="button" aria-pressed="true">Sound: On</button>
-            <button id="btnFS" class="btn ghost" type="button">Fullscreen</button>
-          </div>
-        </div>
+  <main class="stage">
+    <div class="frame glass">
+      <canvas id="game" aria-label="Frogger game canvas"></canvas>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+    </div>
 
-        <div class="hint">
-          <span class="kbd">PC:</span> Arrow Keys / WASD • <span class="kbd">Mobile:</span> Swipe or Tap controls • <span class="kbd">F:</span> Fullscreen
-        </div>
+    <div class="mobileControls glass" aria-label="Mobile controls">
+      <button class="pad" data-dir="up" aria-label="Up">▲</button>
+      <div class="row">
+        <button class="pad" data-dir="left" aria-label="Left">◀</button>
+        <button class="pad action" data-action="jump" aria-label="Jump / Move">●</button>
+        <button class="pad" data-dir="right" aria-label="Right">▶</button>
       </div>
-
-      <!-- Mobile controls -->
-      <div class="controls" aria-label="Mobile controls">
-        <button class="pad up" data-dir="up" aria-label="Up">▲</button>
-        <div class="row">
-          <button class="pad left" data-dir="left" aria-label="Left">◀</button>
-          <button class="pad down" data-dir="down" aria-label="Down">▼</button>
-          <button class="pad right" data-dir="right" aria-label="Right">▶</button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="foot">
-      <div id="status" class="status">Press <b>Start</b> (sound will enable after first interaction).</div>
-    </footer>
+      <button class="pad" data-dir="down" aria-label="Down">▼</button>
+      <div class="hint">Swipe or tap • Arrow keys / WASD</div>
+    </div>
   </main>
+
+  <section id="overlay" class="overlay" aria-live="polite">
+    <div class="panel glass">
+      <div id="ovTitle" class="ovTitle">FROGGER</div>
+      <div id="ovBody" class="ovBody">
+        Cross the road, ride the logs, and reach all 5 homes. Don’t fall in the river.
+      </div>
+
+      <div class="ovStats">
+        <div class="chip"><span class="k">Best</span><span id="best" class="v">0</span></div>
+        <div class="chip"><span class="k">Tip</span><span class="v">Be patient.</span></div>
+      </div>
+
+      <div class="ovBtns">
+        <button id="btnStart" class="btn big" type="button">Start</button>
+        <button id="btnHow" class="btn ghost big" type="button">How to Play</button>
+      </div>
+
+      <div id="how" class="how hidden">
+        <ul>
+          <li><b>Move</b>: Arrow keys / WASD • Mobile: swipe or D-pad</li>
+          <li><b>Road</b>: Avoid vehicles</li>
+          <li><b>River</b>: Stay on logs/turtles (or you sink)</li>
+          <li><b>Homes</b>: Fill all 5 to advance the level</li>
+          <li><b>Time</b>: Each run has a timer — hurry!</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="footInner glass">
+      <span>Tip: Hold your lane — let the gaps come to you.</span>
+      <span class="sep">•</span>
+      <span>Built for GitHub Pages</span>
+    </div>
+  </footer>
 
   <script src="game.js"></script>
 </body>

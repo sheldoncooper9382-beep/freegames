@@ -1,0 +1,161 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Grenze', serif;
+    height: 100vh;
+    background: radial-gradient(#409c2b, #385e2c);
+    font-size: 1.5vw;
+}
+
+h1 {
+    color: lightgrey;
+    margin: 0;
+    font-size: 3.5vw;
+}
+
+#pile {
+    cursor: pointer;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch center;
+    border: 2px solid rgba(167, 201, 164, 0.6);
+    border-radius: 5px;    
+    padding: 20px 20px 20px 20px;
+}
+
+#game-board section div {
+    position: relative;
+}
+
+#topRow {
+    display: flex;
+}
+
+#draw {
+    margin-right: auto;
+}
+
+#bottomRow {
+    display: flex;
+    margin-bottom: 38vh;
+}
+
+footer {
+    display: flex; 
+    justify-content: left;
+    margin: 1vh 0 auto 0;
+    width: 48vw;
+}
+
+#timer {
+    margin-right: auto;
+    color: lightgrey;
+}
+
+#score {
+    margin-right: 3vw;
+    color: lightgrey;
+}
+
+button {
+    font-size: 1.6vw;
+    background: #629736;
+    width: 10vw;
+    border: solid 1px lightgrey;
+    border-radius: 2px;
+    color: lightgrey;
+    font-family: 'Grenze', serif;
+}
+
+.highlight {
+    box-shadow: 0px 0px 10px .3vw rgb(255, 255, 255);
+}
+
+/* ----- initial deal animation ----- */
+.card.deal-in {
+    animation-name: dealIn;
+    animation-duration: 420ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+}
+
+@keyframes dealIn {
+    from {
+        opacity: 0;
+        transform: translate(18vw, -18vh) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ----- win celebration overlay ----- */
+.win-celebration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.win-celebration.fade-out {
+    opacity: 0;
+    transition: opacity 600ms ease;
+}
+
+.win-burst {
+    position: absolute;
+    left: 50%;
+    top: 18vh;
+    width: 12px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    box-shadow:
+        0 0 0 0 rgba(255,255,255,0.9),
+        0 0 0 0 rgba(255,255,255,0.6);
+    animation: burst 900ms ease-out both;
+}
+
+@keyframes burst {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.9), 0 0 0 0 rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 0 90px rgba(255,255,255,0), 0 0 0 150px rgba(255,255,255,0); }
+}
+
+.confetti {
+    position: absolute;
+    top: -4vh;
+    width: 10px;
+    height: 14px;
+    border-radius: 2px;
+    opacity: 0.95;
+    animation-name: confettiFall;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    will-change: transform;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* Give pieces variety without changing game visuals */
+.confetti:nth-child(3n) { width: 8px; height: 12px; }
+.confetti:nth-child(4n) { width: 12px; height: 8px; }
+.confetti:nth-child(5n) { width: 6px; height: 16px; }

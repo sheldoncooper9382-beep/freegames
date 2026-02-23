@@ -753,7 +753,7 @@ function showWinCelebration() {
         c.style.left = `${Math.random() * 100}vw`;
         c.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 90%, 60%)`;
         c.style.animationDelay = `${Math.random() * 0.6}s`;
-        c.style.animationDuration = `${10 + Math.random() * 1.2}s`;
+        c.style.animationDuration = `${10 + Math.random() * 5.0}s`;
         c.style.transform = `rotate(${Math.random() * 360}deg)`;
         overlay.appendChild(c);
     }
@@ -763,6 +763,6 @@ function showWinCelebration() {
     // Auto-remove after animation
     setTimeout(() => {
         overlay.classList.add('fade-out');
-        setTimeout(() => overlay.remove(), 600);
+        setTimeout(() => overlay.remove(), 900);
     }, 4200);
 }

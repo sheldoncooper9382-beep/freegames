@@ -746,13 +746,13 @@ function showWinCelebration() {
     overlay.appendChild(burst);
 
     // confetti pieces
-    const pieces = 500;
+    const pieces = 250;
     for (let i = 0; i < pieces; i++) {
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = `${Math.random() * 100}vw`;
         c.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 90%, 60%)`;
-        c.style.animationDelay = `${Math.random() * 0.6}s`;
+        c.style.animationDelay = `${Math.random() * 1.2}s`;
         c.style.animationDuration = `${10 + Math.random() * 5.0}s`;
         c.style.transform = `rotate(${Math.random() * 360}deg)`;
         overlay.appendChild(c);
